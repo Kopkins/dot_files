@@ -1,0 +1,77 @@
+## Conky settings 
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 2
+double_buffer yes
+no_buffers yes
+format_human_readable
+
+## Text settings
+use_xft yes
+xftfont Ubuntu:size=8
+xftalpha 0.8
+override_utf8_locale yes
+text_buffer_size 4096
+
+## Window specifications
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_argb_visual no
+own_window_argb_value 0
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+alignment top_right
+gap_x 20
+gap_y 18
+border_inner_margin 8
+minimum_size 200 0
+maximum_width 200
+default_bar_size 50 8
+
+## Graphics settings
+draw_shades yes
+default_shade_color 000000
+default_color FFFFFF
+
+## Lua Background
+lua_load ~/.conky/drawBackground.lua
+lua_draw_hook_pre draw_bg
+
+TEXT
+## System
+${font Ubuntu:style=Bold:size=8}SYSTEM $stippled_hr${font}
+${goto 40}${voffset 6}${kernel}${alignr}${uptime}
+## CPU
+${voffset 6}${font Ubuntu:style=Bold:size=8}CPU${font}${offset -20}${voffset 10}${cpubar cpu0 4,18}
+${voffset -23}${goto 40}Core 0: ${font Ubuntu:style=Bold:size=8}${cpu cpu1}% ${alignr}${freq_g 0}${font}G ${cpubar cpu1 7,70 EEEEEE}
+${voffset 1}${goto 40}Core 1: ${font Ubuntu:style=Bold:size=8}${cpu cpu2}% ${alignr}${freq_g 2}${font}G ${cpubar cpu2 7,70 EEEEEE}
+${voffset 1}${font Ubuntu:style=Bold:size=8}${execi 6 sensors | grep high | cut -c16-19 }${font}${goto 40}Core 2: ${font Ubuntu:style=Bold:size=8}${cpu cpu3}% ${alignr}${freq_g 2}${font}G ${cpubar cpu3 7,70 EEEEEE}
+${voffset 1}${goto 40}Core 3: ${font Ubuntu:style=Bold:size=8}${cpu cpu4}% ${alignr}${freq_g 3}${font}G ${cpubar cpu4 7,70 EEEEEE}
+## RAM
+${voffset 6}${font Ubuntu:style=Bold:size=8}RAM${font}${goto 40}: ${font Ubuntu:style=Bold:size=8}$memperc%${font}${goto 100}${alignr}${membar 6,70}
+${voffset 6}${offset 1}${voffset -8}${voffset 4}${goto 40}${voffset -2}${font}Used ${font Ubuntu:style=Bold:size=8}${mem}${goto 110}/ ${font}${font Ubuntu:style=Bold:size=8}${memmax}
+## Top
+${voffset 4}${font Ubuntu:style=Bold:size=8}TOP${font}${voffset 0}${goto 126}CPU${alignr}RAM
+${voffset -1}${goto 40}${top name 1}${font Ubuntu:style=Bold:size=8} ${goto 120}${top cpu 1}${alignr }${top mem 1}${font}
+${voffset -1}${goto 40}${top name 2}${font Ubuntu:style=Bold:size=8} ${goto 120}${top cpu 2}${alignr }${top mem 2}${font}
+${voffset -1}${goto 40}${top name 3}${font Ubuntu:style=Bold:size=8} ${goto 120}${top cpu 3}${alignr }${top mem 3}${font}
+## HD
+${voffset 4}${font Ubuntu:style=Bold:size=8}HD $stippled_hr${font}
+${voffset 4}${goto 20}/ : ${font Ubuntu:style=Bold:size=8}${fs_used_perc /}%${font}${goto 100}${alignr}${fs_bar 6,68 /}
+${offset 7}Free: ${font Ubuntu:style=Bold:size=8}${fs_free /}${font} ${alignr 1}Used: ${font Ubuntu:style=Bold:size=8}${fs_used /}${font}
+${voffset 4}${goto 20}/home : ${font Ubuntu:style=Bold:size=8}${fs_used_perc /home}%${font}${goto 100}${alignr}${fs_bar 6,68 /home}
+${offset 7}Free: ${font Ubuntu:style=Bold:size=8}${fs_free /home}${font} ${alignr 1}Used: ${font Ubuntu:style=Bold:size=8}${fs_used /home}${font}
+${voffset 4}${goto 20}/var : ${font Ubuntu:style=Bold:size=8}${fs_used_perc /var}%${font}${goto 100}${alignr}${fs_bar 6,68 /var}
+${offset 7}Free: ${font Ubuntu:style=Bold:size=8}${fs_free /var}${font} ${alignr 1}Used: ${font Ubuntu:style=Bold:size=8}${fs_used /var}${font}
+## Network
+${voffset 4}${font Ubuntu:style=Bold:size=8}NETWORK $stippled_hr${font}
+${voffset 4}${goto 20}Download: ${font Ubuntu:style=Bold:size=8}${downspeed wlp2s0}${font} ${alignr}${downspeedgraph wlp2s0 8,50 EEEEEE}
+${goto 20}Overall: ${font Ubuntu:style=Bold:size=8}${totaldown wlp2s0}${font}
+${voffset 4}${goto 20}Upload: ${font Ubuntu:style=Bold:size=8}${upspeed wlp2s0}${font} ${alignr}${upspeedgraph wlp2s0 8,50 EEEEEE}
+${goto 20}Overall: ${font Ubuntu:style=Bold:size=8}${totalup wlp2s0}${font}
+## System
+${voffset 4}${font Ubuntu:style=Bold:size=8}POWER $stippled_hr${font}
+${voffset 4}${goto 20}Battery: ${font Ubuntu:style=Bold:size=8}${battery}${font}${goto 100}${alignr}${battery_bar 8,50}
+${goto 20}Remaining: ${font Ubuntu:style=Bold:size=8}${battery_time}${font}
+
