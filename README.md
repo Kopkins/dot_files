@@ -1,2 +1,2 @@
 # dot_files
-Important dot files
+My dot files
