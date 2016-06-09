@@ -34,10 +34,6 @@ draw_shades yes
 default_shade_color 000000
 default_color FFFFFF
 
-## Lua Background
-lua_load ~/.conky/drawBackground.lua
-lua_draw_hook_pre draw_bg
-
 TEXT
 ## System
 ${font Ubuntu:style=Bold:size=8}SYSTEM $stippled_hr${font}
