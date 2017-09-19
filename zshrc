@@ -100,7 +100,6 @@ alias bat='cat /sys/class/power_supply/BAT0/capacity'
 
 # clock
 while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &
-disown %while
 
 PROMPT="%{$fg[white]%}┌─┤%{$fg_bold[green]%}%n %{$fg_no_bold[cyan]%}%~
 %{$fg[white]%}└─── > %{$reset_color%}"
